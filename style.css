@@ -1,0 +1,191 @@
+/* ==============================================
+   styles.css - Luxury Birthday Vault Theme
+   ============================================== */
+
+/* Base & Utility Classes */
+:root {
+    --bg-deep: #1a0507;
+    --bg-card: #2d0a0e;
+    --gold-primary: #dfb15b;
+    --gold-light: #f3e3b3;
+}
+
+body {
+    background: radial-gradient(circle at center, var(--bg-card) 0%, var(--bg-deep) 100%);
+    background-attachment: fixed;
+}
+
+/* Scrollbar styling for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+    background: #4a3b1a;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-primary);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Luxury Cards */
+.luxury-card {
+    background: rgba(45, 10, 14, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(223, 177, 91, 0.2);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(223, 177, 91, 0.05);
+    transition: all 0.3s ease-in-out;
+}
+.luxury-card:hover {
+    border-color: rgba(223, 177, 91, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(223, 177, 91, 0.1) inset;
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+.shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* ==============================================
+   Widget 1: CSS Birthday Cake & Candle
+   ============================================== */
+.cake-container {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.cake-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 50px;
+    background: #3d1217; /* Dark cake base */
+    border-radius: 8px;
+    box-shadow: inset 0 -10px rgba(0,0,0,0.3);
+    border: 2px solid var(--gold-primary);
+    border-bottom-width: 4px;
+}
+
+.cake-top {
+    position: absolute;
+    bottom: 50px;
+    width: 120px;
+    height: 25px;
+    background: var(--gold-primary); /* Gold icing */
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 5px 0 var(--gold-light) inset;
+}
+.cake-top::after {
+    /* Drip effect */
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    width: 100px;
+    height: 15px;
+    background: radial-gradient(circle, var(--gold-primary) 50%, transparent 55%) 0 0 / 20px 20px repeat-x;
+}
+
+.candle {
+    position: absolute;
+    bottom: 75px;
+    left: 55px;
+    width: 10px;
+    height: 35px;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 5px,
+        #e74c3c 5px,
+        #e74c3c 10px
+    );
+    border-radius: 2px;
+    box-shadow: inset 0 -5px rgba(0,0,0,0.2);
+}
+
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 20px;
+    background: #f1c40f;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #f39c12, 0 0 30px #e67e22;
+    animation: flicker 0.5s infinite alternate;
+    cursor: pointer;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(1deg); opacity: 1; box-shadow: 0 0 15px #f39c12, 0 0 30px #e67e22; }
+    100% { transform: translateX(-50%) scale(1.1) rotate(-1deg); opacity: 0.9; box-shadow: 0 0 20px #f39c12, 0 0 40px #e67e22; }
+}
+
+/* ==============================================
+   Widget 3: Flip Cards
+   ============================================== */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}

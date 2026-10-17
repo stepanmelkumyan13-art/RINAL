@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vibes & Favorites 🌷</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#1a0507] p-8 flex flex-col items-center">
+    <div class="w-full max-w-4xl grid md:grid-cols-2 gap-8 animate-fade-in-up">
+        
+        <!-- Spotify -->
+        <div class="luxury-card p-6 h-[400px] flex flex-col">
+            <h3 class="font-serif text-2xl text-[#dfb15b] mb-4">🎧 Birthday Jams</h3>
+            <div class="flex-grow bg-[#1a0507] rounded border border-[#dfb15b]/20 flex items-center justify-center p-4">
+                <p class="text-sm text-[#f3e3b3]/60 text-center">Embed Spotify Playlist Here</p>
+            </div>
+        </div>
+
+        <!-- Flip Cards -->
+        <div class="luxury-card p-6">
+            <h3 class="font-serif text-2xl text-[#dfb15b] mb-6 text-center">✨ Favorites</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flip-card h-32 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded"><span class="text-4xl">🌷</span></div>
+                        <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded p-2"><p class="font-script text-[#f3e3b3] text-xl">Pink tulips vibe check 💯</p></div>
+                    </div>
+                </div>
+                <div class="flip-card h-32 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded"><span class="text-4xl">😴</span></div>
+                        <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded p-2"><p class="font-script text-[#f3e3b3] text-xl">12-Hour Sleep Mode</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="goToPage('vault.html')" class="mt-12 text-[#dfb15b] underline hover:text-[#f3e3b3]">← Back to Vault</button>
+    <script src="script.js"></script>
+</body>
+</html>

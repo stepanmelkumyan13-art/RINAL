@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday janssss ✨ - Unlock</title>
-    
+    <title>Happy Birthday janssss ✨</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,32 +12,24 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#1a0507] text-[#f3e3b3] font-sans min-h-screen overflow-hidden selection:bg-[#dfb15b] selection:text-[#1a0507]">
-
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#2d0a0e] rounded-full blur-[120px] opacity-60"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4a3b1a] rounded-full blur-[150px] opacity-30"></div>
-    </div>
-
+<body class="bg-[#1a0507] text-[#f3e3b3] font-sans min-h-screen overflow-hidden">
     <section id="screen-1" class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 transition-opacity duration-1000">
         <div class="luxury-card max-w-md w-full p-8 text-center" id="lock-card">
-            <i class="fa-solid fa-lock text-4xl text-[#dfb15b] mb-6 drop-shadow-[0_0_15px_rgba(223,177,91,0.4)]"></i>
+            <i class="fa-solid fa-lock text-4xl text-[#dfb15b] mb-6 drop-shadow-glow"></i>
             <h1 class="font-serif text-3xl font-bold text-[#f3e3b3] mb-2">A Special Surprise for janssss ✨</h1>
-            <p class="text-sm text-[#f3e3b3]/70 mb-8">Enter the secret passcode to unlock your birthday vault 🎂<br><span class="text-xs italic">(Hint: shhh)</span></p>
+            <p class="text-sm text-[#f3e3b3]/70 mb-8">Enter the secret passcode to unlock 🎂<br><span class="text-xs italic">(Hint: shhh)</span></p>
             
             <div class="mb-6">
-                <input type="password" id="passcode-input" placeholder="••••" 
-                       class="w-full bg-[#3d1217]/50 border-2 border-[#dfb15b]/30 rounded-xl py-3 px-6 text-center text-2xl tracking-widest text-[#f3e3b3] outline-none focus:border-[#dfb15b] focus:shadow-[0_0_15px_rgba(223,177,91,0.3)] transition-all">
+                <input type="password" id="passcode-input" placeholder="••••" class="w-full bg-[#3d1217]/50 border-2 border-[#dfb15b]/30 rounded-xl py-3 px-6 text-center text-2xl tracking-widest text-[#f3e3b3] outline-none transition-all focus:border-[#dfb15b]">
                 <p id="passcode-error" class="text-red-400 text-sm mt-3 opacity-0 transition-opacity">Nice try! Check the hint 🤫</p>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <button onclick="clearPasscode()" class="py-3 rounded-lg border border-[#dfb15b]/20 text-[#f3e3b3]/80 hover:bg-[#3d1217]/50 transition-all uppercase tracking-wider text-sm font-semibold">Clear</button>
-                <button onclick="checkPasscode()" class="py-3 rounded-lg bg-[#dfb15b] text-[#1a0507] uppercase tracking-wider text-sm font-bold shadow-[0_0_20px_rgba(223,177,91,0.4)] hover:scale-105 transition-all">Unlock</button>
+                <button onclick="clearPasscode()" class="py-3 rounded-lg border border-[#dfb15b]/20 text-[#f3e3b3]/80 hover:bg-[#3d1217]/50 uppercase text-sm font-semibold">Clear</button>
+                <button onclick="checkPasscode()" class="py-3 rounded-lg bg-[#dfb15b] text-[#1a0507] uppercase text-sm font-bold shadow-gold hover:scale-105 transition-all">Unlock</button>
             </div>
         </div>
     </section>
-
     <script src="script.js"></script>
 </body>
 </html>

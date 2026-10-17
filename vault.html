@@ -2,140 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday janssss ✨ - The Vault</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>The Birthday Vault 🔐</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#1a0507] text-[#f3e3b3] font-sans min-h-screen overflow-x-hidden selection:bg-[#dfb15b] selection:text-[#1a0507]">
+<body class="bg-[#1a0507] text-[#f3e3b3] font-sans min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl p-6 animate-fade-in-up">
+        <h2 class="font-serif text-4xl text-center text-[#dfb15b] mb-12">🔐 Choose a Gift</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Note Button (Triggers Flower Wipe) -->
+            <div class="luxury-card p-6 flex flex-col items-center cursor-pointer group hover:scale-[1.02]" onclick="triggerFlowerTransition('note.html')">
+                <i class="fa-solid fa-envelope-open-text text-5xl text-[#dfb15b] mb-4"></i>
+                <h3 class="font-serif text-xl text-[#dfb15b]">A Birthday Note</h3>
+                <p class="text-sm text-[#f3e3b3]/60 mt-2">Open the letter</p>
+            </div>
 
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#2d0a0e] rounded-full blur-[120px] opacity-60"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4a3b1a] rounded-full blur-[150px] opacity-30"></div>
-    </div>
+            <!-- Photos Button -->
+            <div class="luxury-card p-6 flex flex-col items-center cursor-pointer group hover:scale-[1.02]" onclick="goToPage('photos.html')">
+                <i class="fa-solid fa-camera-retro text-5xl text-[#dfb15b] mb-4"></i>
+                <h3 class="font-serif text-xl text-[#dfb15b]">Highlights</h3>
+                <p class="text-sm text-[#f3e3b3]/60 mt-2">View memories</p>
+            </div>
 
-    <main class="relative z-10 flex flex-col items-center min-h-screen p-4 md:p-8 max-w-6xl mx-auto animate-fade-in-up">
-        <div class="w-full pt-8 pb-24">
-            <h2 class="font-serif text-3xl md:text-5xl text-center text-[#f3e3b3] mb-12">🔐 The Birthday Vault</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                
-                <!-- Card A: A Birthday Note (Triggers Tulips!) -->
-                <div class="luxury-card p-6 flex flex-col items-center justify-center cursor-pointer group hover:scale-[1.02] transition-transform duration-300" onclick="triggerTulipsAndNote()">
-                    <div class="w-full aspect-[4/3] bg-[#2d0a0e] border border-[#dfb15b]/30 rounded-xl relative flex items-center justify-center overflow-hidden shadow-inner">
-                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-                        <i class="fa-solid fa-envelope-open-text text-5xl text-[#dfb15b] group-hover:scale-110 transition-transform duration-300"></i>
-                        <div class="absolute bottom-4 right-4 text-[#dfb15b]/50">
-                            <i class="fa-solid fa-stamp text-2xl drop-shadow-[0_0_5px_rgba(223,177,91,0.8)]"></i>
-                        </div>
-                    </div>
-                    <h3 class="font-serif text-xl text-[#dfb15b] mt-6">✉️ A Birthday Note</h3>
-                    <p class="text-sm text-[#f3e3b3]/60 mt-2">Tap to open</p>
-                </div>
-
-                <!-- Card B: Highlights & Memories -->
-                <div class="luxury-card p-6 flex flex-col items-center group">
-                    <h3 class="font-serif text-xl text-[#dfb15b] mb-6 w-full text-center">📸 Highlights & Memories</h3>
-                    <div class="flex gap-4 overflow-x-auto w-full pb-4 scrollbar-hide snap-x">
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[-3deg] hover:rotate-0 transition-transform">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-[#dfb15b]/40 rotate-2 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-[#2d0a0e] rounded-sm flex items-center justify-center"><i class="fa-solid fa-bolt text-4xl text-[#dfb15b]"></i></div>
-                            <p class="text-[#1a0507] font-script text-xl text-center mt-3 font-bold">goooodddd shiiiii ⚡</p>
-                        </div>
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[2deg] hover:rotate-0 transition-transform mt-4">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-[#dfb15b]/40 -rotate-1 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-blue-900/50 rounded-sm flex items-center justify-center"><i class="fa-solid fa-water text-4xl text-blue-300"></i></div>
-                            <p class="text-[#1a0507] font-script text-xl text-center mt-3 font-bold">wet 🌊</p>
-                        </div>
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[-1deg] hover:rotate-0 transition-transform mt-2">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-[#dfb15b]/40 rotate-3 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-purple-900/50 rounded-sm flex items-center justify-center"><i class="fa-solid fa-bed text-4xl text-purple-300"></i></div>
-                            <p class="text-[#1a0507] font-script text-xl text-center mt-3 font-bold leading-tight">Sleep mode:<br>ALWAYS ON 😴</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card C: Spotify Playlist -->
-                <div class="luxury-card p-6 flex flex-col h-full">
-                    <h3 class="font-serif text-xl text-[#dfb15b] mb-4 flex items-center gap-3">
-                        <i class="fa-brands fa-spotify text-green-400"></i> Birthday Jams
-                    </h3>
-                    <div class="flex-grow w-full bg-[#1a0507] rounded-xl border border-[#dfb15b]/20 flex flex-col items-center justify-center p-4 relative overflow-hidden min-h-[150px]">
-                        <!-- PASTE SPOTIFY IFRAME HERE -->
-                        <div class="text-center z-10 opacity-60">
-                            <i class="fa-solid fa-music text-3xl mb-2"></i>
-                            <p class="text-sm font-medium">Add Spotify Playlist Embed Here</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card D: Favorite Things Flip Cards -->
-                <div class="luxury-card p-6">
-                    <h3 class="font-serif text-xl text-[#dfb15b] mb-6 text-center">✨ Favorite Things</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded-lg">
-                                    <span class="text-3xl mb-1">🌷</span><span class="text-xs font-semibold uppercase tracking-wider">Pink Tulips</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-[#f3e3b3] text-lg leading-tight">Pink tulips vibe check 💯</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded-lg">
-                                    <span class="text-3xl mb-1">😴</span><span class="text-xs font-semibold uppercase text-center">12-Hour Sleep</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-[#f3e3b3] text-lg leading-tight">May your sleep schedule be undisturbed 🛌</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded-lg">
-                                    <span class="text-3xl mb-1">⚡</span><span class="text-xs font-semibold uppercase tracking-wider text-center">goooodddd shiiiii</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-[#f3e3b3] text-lg leading-tight">Only top-tier moments allowed! ✨</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-[#2d0a0e] border border-[#dfb15b]/30 rounded-lg">
-                                    <span class="text-3xl mb-1">💧</span><span class="text-xs font-semibold uppercase tracking-wider">wet</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-[#4a3b1a] border border-[#dfb15b] rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-[#f3e3b3] text-lg leading-tight">Stay hydrated 🌊</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <!-- Extras Button -->
+            <div class="luxury-card p-6 flex flex-col items-center cursor-pointer group hover:scale-[1.02]" onclick="goToPage('extras.html')">
+                <i class="fa-solid fa-gift text-5xl text-[#dfb15b] mb-4"></i>
+                <h3 class="font-serif text-xl text-[#dfb15b]">Vibes & Favorites</h3>
+                <p class="text-sm text-[#f3e3b3]/60 mt-2">Music & more</p>
             </div>
         </div>
-    </main>
-
-    <!-- Note Modal -->
-    <div id="note-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-[#1a0507]/95 backdrop-blur-md transition-opacity opacity-0">
-        <div class="bg-[#2a0e12] max-w-lg w-[90%] p-8 rounded-2xl border-2 border-[#dfb15b] shadow-[0_0_40px_rgba(223,177,91,0.2)] relative transform scale-95 transition-transform duration-500" id="note-modal-content">
-            <button onclick="closeModal('note-modal')" class="absolute top-4 right-4 text-[#dfb15b]/60 hover:text-[#dfb15b] text-2xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
-            <div class="text-center mb-6"><i class="fa-solid fa-envelope-open-text text-3xl text-[#dfb15b]"></i></div>
-            <p class="font-script text-2xl md:text-3xl text-[#f3e3b3] leading-relaxed tracking-wide text-center">
-                Happy Birthday, janssss! Wishing you an incredible day filled with quality sleep and endless good moments. Really glad to have you as a cool friend—hope this year brings you all the success, happiness, and fun moments you deserve. Enjoy your special day! 🎂✨
-            </p>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

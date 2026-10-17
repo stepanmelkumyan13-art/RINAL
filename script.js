@@ -1,155 +1,109 @@
 // ==============================================
-// script.js - Interactive Logic & Routing
+// Navigation / Page Transitions
 // ==============================================
+function goToPage(url) {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    setTimeout(() => { window.location.href = url; }, 500);
+}
 
-// --- PAGE 1: Lock Screen Logic ---
+// 🌸 The "Two Panes/Flower Wipe" Transition Logic
+function triggerFlowerTransition(url) {
+    // 1. Create the overlay screen
+    const wipe = document.createElement('div');
+    wipe.className = 'flower-wipe';
+    
+    // 2. Fill it with tulips
+    for(let i=0; i<60; i++) {
+        const tulip = document.createElement('span');
+        tulip.className = 'flower-wipe-tulip';
+        tulip.innerText = '🌷';
+        tulip.style.animationDelay = (Math.random() * 1) + 's';
+        wipe.appendChild(tulip);
+    }
+    
+    document.body.appendChild(wipe);
+
+    // 3. Slide it down to cover the screen
+    setTimeout(() => {
+        wipe.classList.add('active');
+    }, 10); // small delay to ensure CSS transition triggers
+
+    // 4. Once screen is covered (0.8s), change the page URL
+    setTimeout(() => {
+        window.location.href = url;
+    }, 850); 
+}
+
+// If the page loads and has an entrance wipe (like note.html), slide it away!
+document.addEventListener("DOMContentLoaded", () => {
+    const entranceWipe = document.getElementById('entrance-flower-wipe');
+    if (entranceWipe) {
+        // Fill it with tulips first so it matches the previous page
+        for(let i=0; i<60; i++) {
+            const tulip = document.createElement('span');
+            tulip.className = 'flower-wipe-tulip';
+            tulip.innerText = '🌷';
+            entranceWipe.appendChild(tulip);
+        }
+        
+        // Wait a brief moment, then slide the curtain down to reveal the Note
+        setTimeout(() => {
+            entranceWipe.classList.replace('active', 'exit');
+        }, 300);
+
+        // Remove from DOM after it finishes sliding
+        setTimeout(() => {
+            entranceWipe.remove();
+        }, 1200);
+    }
+});
+
+
+// ==============================================
+// Page 1: Passcode Logic
+// ==============================================
 const passcodeInput = document.getElementById('passcode-input');
-const lockCard = document.getElementById('lock-card');
-const errorText = document.getElementById('passcode-error');
-
 if (passcodeInput) {
-    passcodeInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') checkPasscode();
-    });
+    passcodeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') checkPasscode(); });
 }
-
 function clearPasscode() {
-    passcodeInput.value = '';
-    errorText.classList.remove('opacity-100');
+    if(passcodeInput) passcodeInput.value = '';
+    const err = document.getElementById('passcode-error');
+    if(err) err.classList.remove('opacity-100');
 }
-
 function checkPasscode() {
     const val = passcodeInput.value.trim().toLowerCase();
     if (val === 'shhh') {
-        errorText.classList.remove('opacity-100');
-        
-        // Confetti burst on success
-        if (typeof confetti !== 'undefined') {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#dfb15b', '#f3e3b3'] });
-        }
-        
-        // Fade out and Redirect to Dashboard Page
-        const screen1 = document.getElementById('screen-1');
-        screen1.style.opacity = '0';
-        setTimeout(() => {
-            window.location.href = 'dashboard.html';
-        }, 1200); 
+        if(typeof confetti !== 'undefined') confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#dfb15b'] });
+        goToPage('dashboard.html');
     } else {
-        errorText.classList.add('opacity-100');
-        lockCard.classList.add('shake');
-        setTimeout(() => { lockCard.classList.remove('shake'); }, 500); 
+        document.getElementById('passcode-error').classList.add('opacity-100');
+        document.getElementById('lock-card').classList.add('shake');
+        setTimeout(() => { document.getElementById('lock-card').classList.remove('shake'); }, 500); 
     }
 }
 
-// --- PAGE 2: Dashboard Logic ---
+// ==============================================
+// Page 2: Dashboard Game Logic
+// ==============================================
 let candleBlown = false;
 function blowOutCandle() {
     if(candleBlown) return;
     candleBlown = true;
-    
-    const flame = document.getElementById('flame');
+    document.getElementById('flame').style.display = 'none'; 
     const btn = document.getElementById('blow-candle-btn');
-    const msg = document.getElementById('wish-message');
-    
-    flame.style.display = 'none'; 
     btn.innerHTML = '✨ Wish Made ✨';
-    btn.classList.add('bg-[#dfb15b]', 'text-[#1a0507]');
-    
-    msg.classList.remove('hidden');
-    setTimeout(() => { msg.classList.add('opacity-100'); }, 50);
-
-    if (typeof confetti !== 'undefined') {
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#dfb15b', '#ffffff'] });
-    }
+    if(typeof confetti !== 'undefined') confetti({ particleCount: 100, origin: { y: 0.6 } });
 }
 
 const noBtn = document.getElementById('no-btn');
-const evasiveText = document.getElementById('evasive-text');
-const funnyTexts = ["Nope, wrong button! 😜", "You gotta see what's inside!", "Try clicking YES instead 💅", "Nice try!"];
-
 if (noBtn) {
+    const evade = (e) => {
+        e.preventDefault();
+        noBtn.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 100 - 50}px)`;
+        document.getElementById('evasive-text').textContent = ["Nope! 😜", "Click YES 💅", "Nice try!"][Math.floor(Math.random()*3)];
+    };
     noBtn.addEventListener('mouseover', evade);
     noBtn.addEventListener('touchstart', evade); 
-}
-
-function evade(e) {
-    e.preventDefault();
-    const x = Math.random() * 200 - 100; 
-    const y = Math.random() * 100 - 50;  
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    evasiveText.textContent = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
-}
-
-function goToVault() {
-    // Redirect to Vault Page
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    setTimeout(() => {
-        window.location.href = 'vault.html';
-    }, 500);
-}
-
-// --- PAGE 3: Vault & Tulips Logic ---
-
-// Triggers the falling tulips, THEN opens the note
-function triggerTulipsAndNote() {
-    // 1. Create the container for tulips
-    const container = document.createElement('div');
-    container.className = 'tulip-container';
-    document.body.appendChild(container);
-
-    // 2. Generate 40 tulips with random start positions and speeds
-    for (let i = 0; i < 40; i++) {
-        const tulip = document.createElement('div');
-        tulip.className = 'falling-tulip';
-        tulip.innerText = '🌷';
-        
-        // Random horizontal start position
-        tulip.style.left = (Math.random() * 100) + 'vw';
-        
-        // Randomize speed (between 2s and 4.5s)
-        tulip.style.animationDuration = (Math.random() * 2.5 + 2) + 's'; 
-        
-        // Stagger the drops (between 0s and 1.5s delay)
-        tulip.style.animationDelay = (Math.random() * 1.5) + 's';
-        
-        container.appendChild(tulip);
-    }
-
-    // 3. Open the Note Modal exactly 2 seconds into the tulip animation
-    setTimeout(() => {
-        openModal('note-modal');
-    }, 2000);
-
-    // 4. Clean up the tulip container from the DOM after animation finishes
-    setTimeout(() => {
-        container.remove();
-    }, 6000);
-}
-
-function openModal(id) {
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    const content = modal.querySelector('div'); 
-    
-    modal.classList.remove('hidden');
-    void modal.offsetWidth; // Reflow
-    
-    modal.classList.add('opacity-100');
-    content.classList.remove('scale-95');
-    content.classList.add('scale-100');
-}
-
-function closeModal(id) {
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    const content = modal.querySelector('div');
-    
-    modal.classList.remove('opacity-100');
-    content.classList.remove('scale-100');
-    content.classList.add('scale-95');
-    
-    setTimeout(() => {
-        modal.classList.add('hidden');
-    }, 500); 
 }

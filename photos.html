@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memories 📸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#1a0507] min-h-screen p-8 flex flex-col items-center">
+    <h2 class="font-serif text-4xl text-center text-[#dfb15b] mb-12 animate-fade-in-up">📸 Highlights</h2>
+    
+    <div class="flex flex-wrap justify-center gap-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[-3deg] hover:scale-110 transition-transform">
+            <div class="w-full aspect-square bg-[#2d0a0e] flex items-center justify-center"><i class="fa-solid fa-bolt text-6xl text-[#dfb15b]"></i></div>
+            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold">goooodddd shiiiii ⚡</p>
+        </div>
+        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[2deg] hover:scale-110 transition-transform">
+            <div class="w-full aspect-square bg-blue-900/50 flex items-center justify-center"><i class="fa-solid fa-water text-6xl text-blue-300"></i></div>
+            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold">wet 🌊</p>
+        </div>
+        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[-1deg] hover:scale-110 transition-transform">
+            <div class="w-full aspect-square bg-purple-900/50 flex items-center justify-center"><i class="fa-solid fa-bed text-6xl text-purple-300"></i></div>
+            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold leading-tight">Sleep mode:<br>ALWAYS ON 😴</p>
+        </div>
+    </div>
+    
+    <button onclick="goToPage('vault.html')" class="mt-16 text-[#dfb15b] underline hover:text-[#f3e3b3]">← Back to Vault</button>
+    <script src="script.js"></script>
+</body>
+</html>

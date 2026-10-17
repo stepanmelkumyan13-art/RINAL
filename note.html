@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Note for You ✉️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#1a0507] text-[#dfb15b] font-sans min-h-screen flex items-center justify-center p-4">
+    
+    <!-- The Transition Overlay runs automatically when this page loads -->
+    <div id="entrance-flower-wipe" class="flower-wipe active"></div>
+
+    <div class="relative w-full max-w-2xl bg-[#2a0e12] border-2 border-[#dfb15b] p-8 md:p-12 rounded-lg shadow-gold animate-fade-in-up" style="animation-delay: 0.8s;">
+        <!-- Wax seal design -->
+        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-red-900 border-2 border-[#dfb15b] rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-[#dfb15b] text-xl font-serif italic">J</span>
+        </div>
+        
+        <h2 class="font-serif text-2xl text-center text-[#dfb15b]/70 mb-8 tracking-widest uppercase">To janssss</h2>
+        
+        <p class="font-script text-3xl md:text-4xl leading-loose tracking-wide text-[#f3e3b3]">
+            Happy Birthday, janssss! Wishing you an incredible day filled with quality sleep and endless good moments. 
+            Really glad to have you as a cool friend—hope this year brings you all the success, happiness, and fun moments you deserve. 
+            Enjoy your special day! 🎂✨
+        </p>
+
+        <div class="mt-12 flex justify-center">
+            <button onclick="goToPage('vault.html')" class="text-[#dfb15b] underline font-sans text-sm hover:text-[#f3e3b3]">← Back to Vault</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

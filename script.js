@@ -1,13 +1,12 @@
 // ==============================================
-// script.js - Interactive Logic
+// script.js - Interactive Logic & Routing
 // ==============================================
 
-// --- Lock Screen Logic ---
+// --- PAGE 1: Lock Screen Logic ---
 const passcodeInput = document.getElementById('passcode-input');
 const lockCard = document.getElementById('lock-card');
 const errorText = document.getElementById('passcode-error');
 
-// Allow pressing Enter to submit passcode
 if (passcodeInput) {
     passcodeInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') checkPasscode();
@@ -22,68 +21,28 @@ function clearPasscode() {
 function checkPasscode() {
     const val = passcodeInput.value.trim().toLowerCase();
     if (val === 'shhh') {
-        // Success: Hide error and trigger confetti
         errorText.classList.remove('opacity-100');
-        triggerConfetti();
         
-        // Fade out Screen 1, Fade in Screen 2 & 3
+        // Confetti burst on success
+        if (typeof confetti !== 'undefined') {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#dfb15b', '#f3e3b3'] });
+        }
+        
+        // Fade out and Redirect to Dashboard Page
         const screen1 = document.getElementById('screen-1');
-        const main = document.getElementById('main-content');
-        
         screen1.style.opacity = '0';
         setTimeout(() => {
-            screen1.classList.add('hidden');
-            main.classList.remove('hidden');
-            // Slight delay before fading in to ensure smooth transition
-            setTimeout(() => {
-                main.style.opacity = '1';
-            }, 50);
-        }, 1000); // 1-second fade out
+            window.location.href = 'dashboard.html';
+        }, 1200); 
     } else {
-        // Error: Show message and shake card
         errorText.classList.add('opacity-100');
         lockCard.classList.add('shake');
-        
-        // Remove shake class after animation completes so it can happen again
-        setTimeout(() => {
-            lockCard.classList.remove('shake');
-        }, 500); 
+        setTimeout(() => { lockCard.classList.remove('shake'); }, 500); 
     }
 }
 
-// --- Confetti Utility (Requires canvas-confetti CDN) ---
-function triggerConfetti() {
-    const duration = 3000;
-    const end = Date.now() + duration;
-
-    (function frame() {
-        // Left side confetti
-        confetti({
-            particleCount: 5,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#dfb15b', '#f3e3b3', '#2d0a0e', '#e74c3c']
-        });
-        // Right side confetti
-        confetti({
-            particleCount: 5,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#dfb15b', '#f3e3b3', '#2d0a0e', '#e74c3c']
-        });
-
-        // Keep animating until duration is up
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    }());
-}
-
-// --- Candle Blowout Logic ---
+// --- PAGE 2: Dashboard Logic ---
 let candleBlown = false;
-
 function blowOutCandle() {
     if(candleBlown) return;
     candleBlown = true;
@@ -92,69 +51,89 @@ function blowOutCandle() {
     const btn = document.getElementById('blow-candle-btn');
     const msg = document.getElementById('wish-message');
     
-    // Extinguish flame
     flame.style.display = 'none'; 
-    
-    // Update button styling and text
     btn.innerHTML = '✨ Wish Made ✨';
-    btn.classList.add('bg-gold-500', 'text-vault-900');
+    btn.classList.add('bg-[#dfb15b]', 'text-[#1a0507]');
     
-    // Show success message
     msg.classList.remove('hidden');
-    setTimeout(() => {
-        msg.classList.add('opacity-100');
-    }, 50);
+    setTimeout(() => { msg.classList.add('opacity-100'); }, 50);
 
-    // Center small confetti burst for the cake
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#dfb15b', '#ffffff']
-    });
+    if (typeof confetti !== 'undefined') {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#dfb15b', '#ffffff'] });
+    }
 }
 
-// --- Evasive "NO" Button Logic ---
 const noBtn = document.getElementById('no-btn');
 const evasiveText = document.getElementById('evasive-text');
-const funnyTexts = [
-    "Nope, wrong button! 😜", 
-    "You gotta see what's inside!", 
-    "Try clicking YES instead 💅", 
-    "Nice try!"
-];
+const funnyTexts = ["Nope, wrong button! 😜", "You gotta see what's inside!", "Try clicking YES instead 💅", "Nice try!"];
 
 if (noBtn) {
     noBtn.addEventListener('mouseover', evade);
-    noBtn.addEventListener('touchstart', evade); // Support for mobile tapping
+    noBtn.addEventListener('touchstart', evade); 
 }
 
 function evade(e) {
     e.preventDefault();
-    
-    // Random translation bounded by the container
-    const x = Math.random() * 200 - 100; // Random value between -100px and 100px
-    const y = Math.random() * 100 - 50;  // Random value between -50px and 50px
+    const x = Math.random() * 200 - 100; 
+    const y = Math.random() * 100 - 50;  
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    
-    // Cycle random funny text at the bottom of the card
-    const randomText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
-    evasiveText.textContent = randomText;
+    evasiveText.textContent = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 }
 
-// --- Smooth Scrolling ---
-function scrollToVault() {
-    document.getElementById('vault-section').scrollIntoView({ behavior: 'smooth' });
+function goToVault() {
+    // Redirect to Vault Page
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    setTimeout(() => {
+        window.location.href = 'vault.html';
+    }, 500);
 }
 
-// --- Modal Logic ---
+// --- PAGE 3: Vault & Tulips Logic ---
+
+// Triggers the falling tulips, THEN opens the note
+function triggerTulipsAndNote() {
+    // 1. Create the container for tulips
+    const container = document.createElement('div');
+    container.className = 'tulip-container';
+    document.body.appendChild(container);
+
+    // 2. Generate 40 tulips with random start positions and speeds
+    for (let i = 0; i < 40; i++) {
+        const tulip = document.createElement('div');
+        tulip.className = 'falling-tulip';
+        tulip.innerText = '🌷';
+        
+        // Random horizontal start position
+        tulip.style.left = (Math.random() * 100) + 'vw';
+        
+        // Randomize speed (between 2s and 4.5s)
+        tulip.style.animationDuration = (Math.random() * 2.5 + 2) + 's'; 
+        
+        // Stagger the drops (between 0s and 1.5s delay)
+        tulip.style.animationDelay = (Math.random() * 1.5) + 's';
+        
+        container.appendChild(tulip);
+    }
+
+    // 3. Open the Note Modal exactly 2 seconds into the tulip animation
+    setTimeout(() => {
+        openModal('note-modal');
+    }, 2000);
+
+    // 4. Clean up the tulip container from the DOM after animation finishes
+    setTimeout(() => {
+        container.remove();
+    }, 6000);
+}
+
 function openModal(id) {
     const modal = document.getElementById(id);
-    const content = modal.querySelector('div'); // The inner content wrapper
+    if(!modal) return;
+    const content = modal.querySelector('div'); 
     
     modal.classList.remove('hidden');
-    // Trigger reflow to ensure the transition runs
-    void modal.offsetWidth;
+    void modal.offsetWidth; // Reflow
     
     modal.classList.add('opacity-100');
     content.classList.remove('scale-95');
@@ -163,14 +142,14 @@ function openModal(id) {
 
 function closeModal(id) {
     const modal = document.getElementById(id);
+    if(!modal) return;
     const content = modal.querySelector('div');
     
     modal.classList.remove('opacity-100');
     content.classList.remove('scale-100');
     content.classList.add('scale-95');
     
-    // Wait for the transition to finish before hiding the element
     setTimeout(() => {
         modal.classList.add('hidden');
-    }, 300); // This matches duration-300 in Tailwind
+    }, 500); 
 }

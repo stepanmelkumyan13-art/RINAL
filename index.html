@@ -3,280 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday janssss ✨</title>
+    <title>Happy Birthday janssss ✨ - Unlock</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        vault: {
-                            900: '#1a0507',
-                            800: '#2d0a0e',
-                            700: '#3d1217',
-                        },
-                        gold: {
-                            500: '#dfb15b',
-                            300: '#f3e3b3',
-                            900: '#4a3b1a'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
-                        script: ['"Caveat"', 'cursive']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
-    <!-- FontAwesome (Lucide Alternative) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Custom Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-vault-900 text-gold-300 font-sans min-h-screen overflow-x-hidden selection:bg-gold-500 selection:text-vault-900">
+<body class="bg-[#1a0507] text-[#f3e3b3] font-sans min-h-screen overflow-hidden selection:bg-[#dfb15b] selection:text-[#1a0507]">
 
-    <!-- Ambient Glow Background -->
     <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-vault-800 rounded-full blur-[120px] opacity-60"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-gold-900 rounded-full blur-[150px] opacity-30"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#2d0a0e] rounded-full blur-[120px] opacity-60"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4a3b1a] rounded-full blur-[150px] opacity-30"></div>
     </div>
 
-    <!-- ==============================================
-         SCREEN 1: THE LUXURY LOCK SCREEN
-         ============================================== -->
     <section id="screen-1" class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 transition-opacity duration-1000">
         <div class="luxury-card max-w-md w-full p-8 text-center" id="lock-card">
-            <i class="fa-solid fa-lock text-4xl text-gold-500 mb-6 drop-shadow-[0_0_15px_rgba(223,177,91,0.4)]"></i>
-            <h1 class="font-serif text-3xl font-bold text-gold-300 mb-2">A Special Surprise for janssss ✨</h1>
-            <p class="text-sm text-gold-300/70 mb-8">Enter the secret passcode to unlock your birthday vault 🎂<br><span class="text-xs italic">(Hint: shhh)</span></p>
+            <i class="fa-solid fa-lock text-4xl text-[#dfb15b] mb-6 drop-shadow-[0_0_15px_rgba(223,177,91,0.4)]"></i>
+            <h1 class="font-serif text-3xl font-bold text-[#f3e3b3] mb-2">A Special Surprise for janssss ✨</h1>
+            <p class="text-sm text-[#f3e3b3]/70 mb-8">Enter the secret passcode to unlock your birthday vault 🎂<br><span class="text-xs italic">(Hint: shhh)</span></p>
             
             <div class="mb-6">
                 <input type="password" id="passcode-input" placeholder="••••" 
-                       class="w-full bg-vault-700/50 border-2 border-gold-500/30 rounded-xl py-3 px-6 text-center text-2xl tracking-widest text-gold-300 outline-none focus:border-gold-500 focus:shadow-[0_0_15px_rgba(223,177,91,0.3)] transition-all">
+                       class="w-full bg-[#3d1217]/50 border-2 border-[#dfb15b]/30 rounded-xl py-3 px-6 text-center text-2xl tracking-widest text-[#f3e3b3] outline-none focus:border-[#dfb15b] focus:shadow-[0_0_15px_rgba(223,177,91,0.3)] transition-all">
                 <p id="passcode-error" class="text-red-400 text-sm mt-3 opacity-0 transition-opacity">Nice try! Check the hint 🤫</p>
             </div>
 
-            <!-- Stylized Keypad Actions -->
             <div class="grid grid-cols-2 gap-4">
-                <button onclick="clearPasscode()" class="py-3 rounded-lg border border-gold-500/20 text-gold-300/80 hover:bg-vault-700/50 hover:border-gold-500/50 transition-all uppercase tracking-wider text-sm font-semibold">Clear</button>
-                <button onclick="checkPasscode()" class="glow-button py-3 rounded-lg bg-gold-500 text-vault-900 uppercase tracking-wider text-sm font-bold shadow-[0_0_20px_rgba(223,177,91,0.4)] hover:shadow-[0_0_30px_rgba(223,177,91,0.7)] transition-all">Unlock</button>
+                <button onclick="clearPasscode()" class="py-3 rounded-lg border border-[#dfb15b]/20 text-[#f3e3b3]/80 hover:bg-[#3d1217]/50 transition-all uppercase tracking-wider text-sm font-semibold">Clear</button>
+                <button onclick="checkPasscode()" class="py-3 rounded-lg bg-[#dfb15b] text-[#1a0507] uppercase tracking-wider text-sm font-bold shadow-[0_0_20px_rgba(223,177,91,0.4)] hover:scale-105 transition-all">Unlock</button>
             </div>
         </div>
     </section>
 
-    <!-- ==============================================
-         SCREEN 2 & 3: DASHBOARD & VAULT
-         ============================================== -->
-    <main id="main-content" class="relative z-10 hidden flex-col items-center min-h-screen p-4 md:p-8 max-w-6xl mx-auto opacity-0 transition-opacity duration-1000">
-        
-        <!-- Header -->
-        <header class="text-center my-12 animate-fade-in-up">
-            <h1 class="font-serif text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 drop-shadow-lg">
-                Happy Birthday, janssss! 🎉
-            </h1>
-            <div class="h-px w-32 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-6"></div>
-        </header>
-
-        <!-- Screen 2 Widgets (Cake & Evasive Game) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-16 animate-fade-in-up" style="animation-delay: 0.2s;">
-            
-            <!-- Widget 1: Cake Blowout -->
-            <div class="luxury-card p-8 flex flex-col items-center justify-center min-h-[350px]">
-                <h2 class="font-serif text-xl text-gold-500 mb-8">Make a Wish 🎂</h2>
-                
-                <!-- CSS Cake -->
-                <div class="cake-container mb-8 relative">
-                    <div class="candle" id="candle">
-                        <div class="flame" id="flame"></div>
-                    </div>
-                    <div class="cake-top"></div>
-                    <div class="cake-bottom"></div>
-                </div>
-
-                <button id="blow-candle-btn" onclick="blowOutCandle()" class="glow-button px-6 py-3 rounded-full border border-gold-500 text-gold-300 hover:bg-gold-500 hover:text-vault-900 transition-all font-semibold shadow-[0_0_15px_rgba(223,177,91,0.2)]">
-                    🕯️ Blow Out Candle
-                </button>
-                <p id="wish-message" class="text-center text-sm mt-4 text-gold-300/80 hidden opacity-0 transition-opacity duration-1000 max-w-xs">
-                    Wish registered! Hope your year is full of 12-hour sleep sessions, zero stress, and top-tier vibes ✨
-                </p>
-            </div>
-
-            <!-- Widget 2: Evasive Button -->
-            <div class="luxury-card p-8 flex flex-col items-center justify-center min-h-[350px] relative overflow-hidden">
-                <h2 class="font-serif text-2xl text-gold-500 mb-4 text-center">Ready to check out your birthday vault?</h2>
-                <div class="flex gap-4 mt-8 w-full justify-center" id="evasive-container">
-                    <button onclick="scrollToVault()" class="px-8 py-3 rounded-lg bg-gold-500 text-vault-900 font-bold shadow-[0_0_20px_rgba(223,177,91,0.4)] hover:scale-105 transition-transform z-20">
-                        YES
-                    </button>
-                    <button id="no-btn" class="px-8 py-3 rounded-lg border border-gold-500/50 text-gold-300 bg-vault-800 transition-all duration-300 z-10">
-                        NO
-                    </button>
-                </div>
-                <p id="evasive-text" class="absolute bottom-6 text-sm text-gold-500/80 h-5 font-script text-xl"></p>
-            </div>
-        </div>
-
-        <!-- ==============================================
-             SCREEN 3: THE BIRTHDAY VAULT GRID
-             ============================================== -->
-        <div id="vault-section" class="w-full pt-8 pb-24 border-t border-gold-500/20">
-            <h2 class="font-serif text-3xl text-center text-gold-300 mb-12">🔐 The Birthday Vault</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                
-                <!-- Card A: A Birthday Note -->
-                <div class="luxury-card p-6 flex flex-col items-center justify-center cursor-pointer group hover:scale-[1.02] transition-transform duration-300" onclick="openModal('note-modal')">
-                    <div class="w-full aspect-[4/3] bg-vault-800 border border-gold-500/30 rounded-xl relative flex items-center justify-center overflow-hidden shadow-inner">
-                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-                        <i class="fa-solid fa-envelope-open-text text-5xl text-gold-500 group-hover:scale-110 transition-transform duration-300"></i>
-                        <div class="absolute bottom-4 right-4 text-gold-500/50">
-                            <i class="fa-solid fa-stamp text-2xl drop-shadow-[0_0_5px_rgba(223,177,91,0.8)]"></i>
-                        </div>
-                    </div>
-                    <h3 class="font-serif text-xl text-gold-500 mt-6">✉️ A Birthday Note</h3>
-                    <p class="text-sm text-gold-300/60 mt-2">Tap to open</p>
-                </div>
-
-                <!-- Card B: Highlights & Memories -->
-                <div class="luxury-card p-6 flex flex-col items-center group">
-                    <h3 class="font-serif text-xl text-gold-500 mb-6 w-full text-center">📸 Highlights & Memories</h3>
-                    <div class="flex gap-4 overflow-x-auto w-full pb-4 scrollbar-hide snap-x">
-                        <!-- Polaroid 1 -->
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[-3deg] hover:rotate-0 transition-transform cursor-pointer">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-gold-500/40 rotate-2 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-vault-800 rounded-sm flex items-center justify-center overflow-hidden">
-                                <i class="fa-solid fa-bolt text-4xl text-gold-500"></i>
-                            </div>
-                            <p class="text-vault-900 font-script text-xl text-center mt-3 font-bold">goooodddd shiiiii ⚡</p>
-                        </div>
-                        <!-- Polaroid 2 -->
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[2deg] hover:rotate-0 transition-transform cursor-pointer mt-4">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-gold-500/40 -rotate-1 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-blue-900/50 rounded-sm flex items-center justify-center overflow-hidden">
-                                <i class="fa-solid fa-water text-4xl text-blue-300"></i>
-                            </div>
-                            <p class="text-vault-900 font-script text-xl text-center mt-3 font-bold">wet 🌊</p>
-                        </div>
-                        <!-- Polaroid 3 -->
-                        <div class="polaroid snap-center shrink-0 w-48 bg-gray-100 p-3 pb-8 rounded shadow-lg relative transform rotate-[-1deg] hover:rotate-0 transition-transform cursor-pointer mt-2">
-                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-gold-500/40 rotate-3 z-10 backdrop-blur-sm"></div>
-                            <div class="w-full aspect-square bg-purple-900/50 rounded-sm flex items-center justify-center overflow-hidden">
-                                <i class="fa-solid fa-bed text-4xl text-purple-300"></i>
-                            </div>
-                            <p class="text-vault-900 font-script text-xl text-center mt-3 font-bold leading-tight">Sleep mode:<br>ALWAYS ON 😴</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card C: Spotify Playlist -->
-                <div class="luxury-card p-6 flex flex-col h-full">
-                    <h3 class="font-serif text-xl text-gold-500 mb-4 flex items-center gap-3">
-                        <i class="fa-brands fa-spotify text-green-400"></i> Birthday Jams
-                    </h3>
-                    <div class="flex-grow w-full bg-vault-900 rounded-xl border border-gold-500/20 flex flex-col items-center justify-center p-4 relative overflow-hidden min-h-[150px]">
-                        <!-- SPOTIFY EMBED START -->
-                        <!-- PASTE YOUR SPOTIFY EMBED IFRAME HERE -->
-                        <div class="text-center z-10 opacity-60">
-                            <i class="fa-solid fa-music text-3xl mb-2"></i>
-                            <p class="text-sm font-medium">Add Spotify Playlist Embed Here</p>
-                        </div>
-                        <!-- SPOTIFY EMBED END -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-vault-800 to-vault-900 opacity-50"></div>
-                    </div>
-                </div>
-
-                <!-- Card D: Favorite Things Flip Cards -->
-                <div class="luxury-card p-6">
-                    <h3 class="font-serif text-xl text-gold-500 mb-6 text-center">✨ Favorite Things</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <!-- Flip Card 1 -->
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-vault-800 border border-gold-500/30 rounded-lg">
-                                    <span class="text-3xl mb-1">🌷</span>
-                                    <span class="text-xs font-semibold uppercase tracking-wider">Pink Tulips</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-gold-900 border border-gold-500 rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-gold-300 text-lg leading-tight">Pink tulips vibe check 💯</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Flip Card 2 -->
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-vault-800 border border-gold-500/30 rounded-lg">
-                                    <span class="text-3xl mb-1">😴</span>
-                                    <span class="text-xs font-semibold uppercase tracking-wider text-center">12-Hour Sleep</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-gold-900 border border-gold-500 rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-gold-300 text-lg leading-tight">May your sleep schedule be undisturbed 🛌</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Flip Card 3 -->
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-vault-800 border border-gold-500/30 rounded-lg">
-                                    <span class="text-3xl mb-1">⚡</span>
-                                    <span class="text-xs font-semibold uppercase tracking-wider text-center">goooodddd shiiiii</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-gold-900 border border-gold-500 rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-gold-300 text-lg leading-tight">Only top-tier moments allowed today! ✨</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Flip Card 4 -->
-                        <div class="flip-card h-28 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front flex flex-col items-center justify-center bg-vault-800 border border-gold-500/30 rounded-lg">
-                                    <span class="text-3xl mb-1">💧</span>
-                                    <span class="text-xs font-semibold uppercase tracking-wider">wet</span>
-                                </div>
-                                <div class="flip-card-back flex items-center justify-center bg-gold-900 border border-gold-500 rounded-lg p-3 text-center">
-                                    <p class="text-sm font-script text-gold-300 text-lg leading-tight">Stay hydrated 🌊</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- ==============================================
-         MODALS
-         ============================================== -->
-    <!-- Note Modal -->
-    <div id="note-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-vault-900/90 backdrop-blur-md transition-opacity opacity-0">
-        <div class="bg-[#2a0e12] max-w-lg w-[90%] p-8 rounded-2xl border-2 border-gold-500 shadow-[0_0_40px_rgba(223,177,91,0.2)] relative transform scale-95 transition-transform duration-300" id="note-modal-content">
-            <button onclick="closeModal('note-modal')" class="absolute top-4 right-4 text-gold-500/60 hover:text-gold-500 text-2xl transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="text-center mb-6">
-                <i class="fa-solid fa-envelope-open-text text-3xl text-gold-500"></i>
-            </div>
-            <p class="font-script text-2xl md:text-3xl text-gold-300 leading-relaxed tracking-wide">
-                Happy Birthday, janssss! Wishing you an incredible day filled with quality sleep and endless good moments. Really glad to have you as a cool friend—hope this year brings you all the success, happiness, and fun moments you deserve. Enjoy your special day! 🎂✨
-            </p>
-        </div>
-    </div>
-
-    <!-- External Script -->
     <script src="script.js"></script>
 </body>
 </html>

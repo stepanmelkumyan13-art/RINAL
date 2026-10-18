@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>A Note for You ✉️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Birthday Note 💌</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💌%3C/text%3E%3C/svg%3E">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <noscript><style>#flower-overlay { display: none; }</style></noscript>
 </head>
-<body class="bg-[#1a0507] text-[#dfb15b] font-sans min-h-screen flex items-center justify-center p-4">
-    
-    <!-- The Transition Overlay runs automatically when this page loads -->
-    <div id="entrance-flower-wipe" class="flower-wipe active"></div>
+<body class="no-page-in">
 
-    <div class="relative w-full max-w-2xl bg-[#2a0e12] border-2 border-[#dfb15b] p-8 md:p-12 rounded-lg shadow-gold animate-fade-in-up" style="animation-delay: 0.8s;">
-        <!-- Wax seal design -->
-        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-red-900 border-2 border-[#dfb15b] rounded-full flex items-center justify-center shadow-lg">
-            <span class="text-[#dfb15b] text-xl font-serif italic">J</span>
-        </div>
-        
-        <h2 class="font-serif text-2xl text-center text-[#dfb15b]/70 mb-8 tracking-widest uppercase">To janssss</h2>
-        
-        <p class="font-script text-3xl md:text-4xl leading-loose tracking-wide text-[#f3e3b3]">
-            Happy Birthday, janssss! Wishing you an incredible day filled with quality sleep and endless good moments. 
-            Really glad to have you as a cool friend—hope this year brings you all the success, happiness, and fun moments you deserve. 
-            Enjoy your special day! 🎂✨
-        </p>
+  <!-- Phase 2 of the flower transition: solid dark cover that script.js fills with tulips, then fades out -->
+  <div id="flower-overlay" class="flower-overlay" aria-hidden="true">
+    <div class="flower-bg solid"></div>
+  </div>
 
-        <div class="mt-12 flex justify-center">
-            <button onclick="goToPage('vault.html')" class="text-[#dfb15b] underline font-sans text-sm hover:text-[#f3e3b3]">← Back to Vault</button>
-        </div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="letter-wrap">
+      <article class="parchment">
+        <div class="wax-seal" aria-hidden="true">J</div>
+        <h1 class="letter-greeting">Happy Birthday, janssss!</h1>
+        <p class="letter-body">Wishing you an incredible day filled with quality sleep and endless good moments. Really glad to have you as a cool friend—hope this year brings you all the success, happiness, and fun moments you deserve. Enjoy your special day! 🎂✨</p>
+      </article>
+
+      <div class="text-center" style="margin-top: 2.5rem;">
+        <a href="vault.html" class="btn btn-ghost" data-nav="vault.html">← Back to Vault</a>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </main>
 </body>
 </html>

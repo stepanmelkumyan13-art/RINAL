@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Memories 📸</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highlights 📸</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
-<body class="bg-[#1a0507] min-h-screen p-8 flex flex-col items-center">
-    <h2 class="font-serif text-4xl text-center text-[#dfb15b] mb-12 animate-fade-in-up">📸 Highlights</h2>
-    
-    <div class="flex flex-wrap justify-center gap-8 animate-fade-in-up" style="animation-delay: 0.2s;">
-        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[-3deg] hover:scale-110 transition-transform">
-            <div class="w-full aspect-square bg-[#2d0a0e] flex items-center justify-center"><i class="fa-solid fa-bolt text-6xl text-[#dfb15b]"></i></div>
-            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold">goooodddd shiiiii ⚡</p>
-        </div>
-        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[2deg] hover:scale-110 transition-transform">
-            <div class="w-full aspect-square bg-blue-900/50 flex items-center justify-center"><i class="fa-solid fa-water text-6xl text-blue-300"></i></div>
-            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold">wet 🌊</p>
-        </div>
-        <div class="polaroid w-64 bg-gray-100 p-4 pb-12 rounded shadow-lg transform rotate-[-1deg] hover:scale-110 transition-transform">
-            <div class="w-full aspect-square bg-purple-900/50 flex items-center justify-center"><i class="fa-solid fa-bed text-6xl text-purple-300"></i></div>
-            <p class="text-[#1a0507] font-script text-2xl text-center mt-4 font-bold leading-tight">Sleep mode:<br>ALWAYS ON 😴</p>
-        </div>
+<body>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="container-wide">
+
+      <header class="rise text-center" style="margin-bottom: 2.2rem;">
+        <h1 class="h-hero"><span class="gold-text">Highlights</span> 📸</h1>
+        <p class="subtle" style="margin: 0.9rem 0 0; font-size: 1.05rem;">Moments worth framing</p>
+      </header>
+
+      <!-- To use a real photo, replace the icon inside .polaroid-photo with: <img src="your-photo.jpg" alt="..."> -->
+      <div class="polaroid-row">
+
+        <figure class="polaroid rise" style="--rot: -6deg; --d: 0.1s; margin: 0;">
+          <div class="polaroid-photo"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+          <figcaption class="polaroid-caption">goooodddd shiiiii ⚡</figcaption>
+        </figure>
+
+        <figure class="polaroid rise" style="--rot: 3deg; --d: 0.25s; margin: 1.5rem 0 0;">
+          <div class="polaroid-photo"><i class="fa-solid fa-water" aria-hidden="true"></i></div>
+          <figcaption class="polaroid-caption">wet 🌊</figcaption>
+        </figure>
+
+        <figure class="polaroid rise" style="--rot: -3deg; --d: 0.4s; margin: 0;">
+          <div class="polaroid-photo"><i class="fa-solid fa-bed" aria-hidden="true"></i></div>
+          <figcaption class="polaroid-caption">Sleep mode: ALWAYS ON 😴</figcaption>
+        </figure>
+
+      </div>
+
+      <div class="text-center" style="margin-top: 2.5rem;">
+        <a href="vault.html" class="btn btn-ghost" data-nav="vault.html">← Back to Vault</a>
+      </div>
     </div>
-    
-    <button onclick="goToPage('vault.html')" class="mt-16 text-[#dfb15b] underline hover:text-[#f3e3b3]">← Back to Vault</button>
-    <script src="script.js"></script>
+  </main>
 </body>
 </html>

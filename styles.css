@@ -606,8 +606,8 @@ body.page-leaving {
 
 .letter-body {
   font-family: 'Caveat', cursive;
-  font-weight: 500;
-  font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+  font-weight: 200;
+  font-size: clamp(1rem, 4.4vw, 2.3rem);
   line-height: 1.38;
   margin: 0;
   color: #3a1217;
